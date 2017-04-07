@@ -1,16 +1,15 @@
 //
-//  Task.swift
+//  Priority.swift
 //  ToDoApp
 //
 //  Created by Leke Abolade on 07/04/2017.
 //  Copyright © 2017 Leke Abolade. All rights reserved.
 //
 
+import Foundation
 import RealmSwift
 
-class Task: Object {
+class Priority: Object {
     dynamic var name = ""
-    dynamic var createdAt = NSDate()
-    dynamic var isCompleted = false
-    dynamic var priority: Priority!
 }
+
