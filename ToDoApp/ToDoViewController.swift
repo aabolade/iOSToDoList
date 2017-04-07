@@ -26,7 +26,6 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.didReceiveMemoryWarning()
     }
     
-    
     func readTasksAndUpdateUI(){
        
         lists = uiRealm.objects(Task.self)
@@ -41,7 +40,8 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func editTask(_ sender: AnyObject) {
-        
+        editingMode = !editingMode
+        self.tasksTableView.setEditing(editingMode, animated: true)
     }
     
     func displayAlertToAddTask(_ updatedTask:Task!){
@@ -115,6 +115,22 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let list = lists[indexPath.row]
         cell?.textLabel?.text = list.name
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (deleteAction, indexPath) -> Void in
+            
+            //Deletion will go here
+            
+            let taskToBeDeleted = self.lists[indexPath.row]
+            try! uiRealm.write{
+                uiRealm.delete(taskToBeDeleted)
+                self.readTasksAndUpdateUI()
+            }
+        }
+        
+        return [deleteAction]
     }
 
     
