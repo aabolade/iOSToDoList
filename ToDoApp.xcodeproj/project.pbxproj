@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		081126D21E97C7FA0011B331 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081126D11E97C7FA0011B331 /* AppDelegate.swift */; };
-		081126D41E97C7FA0011B331 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081126D31E97C7FA0011B331 /* MasterViewController.swift */; };
-		081126D61E97C7FA0011B331 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081126D51E97C7FA0011B331 /* DetailViewController.swift */; };
 		081126D91E97C7FA0011B331 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081126D71E97C7FA0011B331 /* Main.storyboard */; };
 		081126DB1E97C7FA0011B331 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 081126DA1E97C7FA0011B331 /* Assets.xcassets */; };
 		081126DE1E97C7FA0011B331 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081126DC1E97C7FA0011B331 /* LaunchScreen.storyboard */; };
 		081126E91E97C7FB0011B331 /* ToDoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081126E81E97C7FB0011B331 /* ToDoAppTests.swift */; };
 		081126F41E97C7FB0011B331 /* ToDoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081126F31E97C7FB0011B331 /* ToDoAppUITests.swift */; };
+		081127041E97D8A80011B331 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081127031E97D8A80011B331 /* ToDoViewController.swift */; };
+		081127071E97DD070011B331 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081127061E97DD070011B331 /* Task.swift */; };
 		39D403059DBA1D1E2A3202D2 /* Pods_ToDoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055814D332F1C041A6B6A275 /* Pods_ToDoAppTests.framework */; };
 		5931D2A4A1AAE2208A9F18CE /* Pods_ToDoAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96AC60FFC980C1F9EB7A8719 /* Pods_ToDoAppUITests.framework */; };
 		7A7BDF8E7105A305363DE4D8 /* Pods_ToDoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C32E2B38B5DA63855F411D /* Pods_ToDoApp.framework */; };
@@ -41,8 +41,6 @@
 		055814D332F1C041A6B6A275 /* Pods_ToDoAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		081126CE1E97C7FA0011B331 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		081126D11E97C7FA0011B331 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		081126D31E97C7FA0011B331 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		081126D51E97C7FA0011B331 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		081126D81E97C7FA0011B331 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		081126DA1E97C7FA0011B331 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		081126DD1E97C7FA0011B331 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +51,8 @@
 		081126EF1E97C7FB0011B331 /* ToDoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		081126F31E97C7FB0011B331 /* ToDoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppUITests.swift; sourceTree = "<group>"; };
 		081126F51E97C7FB0011B331 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		081127031E97D8A80011B331 /* ToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		081127061E97DD070011B331 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		0EEAA9D062D20DFB5B87DDD4 /* Pods-ToDoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoApp/Pods-ToDoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2A1B3337BF1DC7B1818D1DD8 /* Pods-ToDoAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoAppUITests/Pods-ToDoAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7B7CE75F83C9B26E88F678B8 /* Pods-ToDoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoAppTests/Pods-ToDoAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,9 +116,9 @@
 		081126D01E97C7FA0011B331 /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				081127051E97DB6B0011B331 /* Models */,
+				081127031E97D8A80011B331 /* ToDoViewController.swift */,
 				081126D11E97C7FA0011B331 /* AppDelegate.swift */,
-				081126D31E97C7FA0011B331 /* MasterViewController.swift */,
-				081126D51E97C7FA0011B331 /* DetailViewController.swift */,
 				081126D71E97C7FA0011B331 /* Main.storyboard */,
 				081126DA1E97C7FA0011B331 /* Assets.xcassets */,
 				081126DC1E97C7FA0011B331 /* LaunchScreen.storyboard */,
@@ -143,6 +143,14 @@
 				081126F51E97C7FB0011B331 /* Info.plist */,
 			);
 			path = ToDoAppUITests;
+			sourceTree = "<group>";
+		};
+		081127051E97DB6B0011B331 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				081127061E97DD070011B331 /* Task.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		6C316EA9354875C018ABAD9B /* Frameworks */ = {
@@ -449,8 +457,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				081126D61E97C7FA0011B331 /* DetailViewController.swift in Sources */,
-				081126D41E97C7FA0011B331 /* MasterViewController.swift in Sources */,
+				081127041E97D8A80011B331 /* ToDoViewController.swift in Sources */,
+				081127071E97DD070011B331 /* Task.swift in Sources */,
 				081126D21E97C7FA0011B331 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,6 +708,7 @@
 				081126FA1E97C7FB0011B331 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		081126FB1E97C7FB0011B331 /* Build configuration list for PBXNativeTarget "ToDoAppTests" */ = {
 			isa = XCConfigurationList;
@@ -708,6 +717,7 @@
 				081126FD1E97C7FB0011B331 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		081126FE1E97C7FB0011B331 /* Build configuration list for PBXNativeTarget "ToDoAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -716,6 +726,7 @@
 				081127001E97C7FB0011B331 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
