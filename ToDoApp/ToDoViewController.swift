@@ -44,6 +44,18 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tasksTableView.setEditing(editingMode, animated: true)
     }
     
+    @IBAction func applyFilter(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            lists = lists.sorted(byProperty: "name")
+        } else {
+            lists = lists.sorted(byProperty: "createdAt", ascending:false)
+        }
+        tasksTableView.reloadData()
+        
+    }
+    
+    
     func displayAlertToAddTask(_ updatedTask:Task!){
         
         var title = "New Tasks"
@@ -120,9 +132,7 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (deleteAction, indexPath) -> Void in
-            
-            //Deletion will go here
-            
+                        
             let taskToBeDeleted = self.lists[indexPath.row]
             try! uiRealm.write{
                 uiRealm.delete(taskToBeDeleted)
@@ -132,14 +142,12 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Edit") { (editAction, indexPath) -> Void in
             
-            // Editing will go here
             let listToBeUpdated = self.lists[indexPath.row]
             self.displayAlertToAddTask(listToBeUpdated)
         }
         return [deleteAction, editAction]
     }
 
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
