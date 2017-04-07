@@ -57,10 +57,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rxi-sx-vJN">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="279-q8-3Hl"/>
-                            <barButtonItem systemItem="edit" id="rvK-XT-cLv"/>
+                            <barButtonItem systemItem="add" id="279-q8-3Hl">
+                                <connections>
+                                    <action selector="addTask:" destination="3Va-dX-YlK" id="x7W-jC-Kza"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="rvK-XT-cLv">
+                                <connections>
+                                    <action selector="editTask:" destination="3Va-dX-YlK" id="Y2S-DN-m04"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tasksTableView" destination="EdI-YV-pq9" id="zS2-sH-mJu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dvn-kb-rvK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
