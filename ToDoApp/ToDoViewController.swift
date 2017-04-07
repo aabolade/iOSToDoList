@@ -130,7 +130,13 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         
-        return [deleteAction]
+        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Edit") { (editAction, indexPath) -> Void in
+            
+            // Editing will go here
+            let listToBeUpdated = self.lists[indexPath.row]
+            self.displayAlertToAddTask(listToBeUpdated)
+        }
+        return [deleteAction, editAction]
     }
 
     
