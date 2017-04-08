@@ -73,7 +73,6 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let createAction = UIAlertAction(title: doneTitle, style: UIAlertActionStyle.default) { (action) -> Void in
             
             let taskName = alertController.textFields?.first?.text
-            
             if updatedTask != nil{
                 // update mode
                 try! uiRealm.write{
@@ -82,20 +81,15 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
             else{
-                
                 let newTask = Task()
                 newTask.name = taskName!
-                
                 try! uiRealm.write{
-                    
                     uiRealm.add(newTask)
                     self.readTasksAndUpdateUI()
                 }
             }
-            
             print(taskName ?? "")
         }
-        
         alertController.addAction(createAction)
         createAction.isEnabled = false
         self.currentCreateAction = createAction
@@ -109,6 +103,7 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 textField.text = updatedTask.name
             }
         }
+        
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -170,9 +165,4 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tasksTableView.reloadData()
     }
 
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
-    
 }
