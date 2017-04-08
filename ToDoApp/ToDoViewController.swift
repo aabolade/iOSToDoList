@@ -9,16 +9,22 @@
 import UIKit
 import RealmSwift
 
-class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     @IBOutlet weak var tasksTableView: UITableView!
     
-    var lists : Results<Task>!
+    var tasks : Results<Task>!
+    var tasksSearch: Results<Task>!
     var currentCreateAction:UIAlertAction!
     var editingMode = false
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tasksTableView.tableHeaderView = searchController.searchBar
         readTasksAndUpdateUI()
     }
 
@@ -26,9 +32,9 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.didReceiveMemoryWarning()
     }
     
+    
     func readTasksAndUpdateUI(){
-       
-        lists = uiRealm.objects(Task.self)
+        tasks = uiRealm.objects(Task.self)
         self.tasksTableView.setEditing(false, animated: true)
         self.tasksTableView.reloadData()
     }
@@ -45,14 +51,12 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func applyFilter(_ sender: UISegmentedControl) {
-        
         if sender.selectedSegmentIndex == 0 {
-            lists = lists.sorted(byProperty: "name")
+            tasks = tasks.sorted(byProperty: "name")
         } else {
-            lists = lists.sorted(byProperty: "createdAt", ascending:false)
+            tasks = tasks.sorted(byProperty: "createdAt", ascending:false)
         }
         tasksTableView.reloadData()
-        
     }
     
     
@@ -113,19 +117,30 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.currentCreateAction.isEnabled = (textField.text?.characters.count)! > 0
     }
     
+    func filterResultsWithSearchString(searchString: String) {
+        let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", searchString)
+        let scopeIndex = searchController.searchBar.selectedScopeButtonIndex
+        
+        switch scopeIndex {
+        case 0: tasksSearch = uiRealm.objects(Task).filter(predicate).sorted(byKeyPath: "name", ascending: true)
+        case 1: tasksSearch = uiRealm.objects(Task).filter(predicate).sorted(byKeyPath: "created", ascending: true)
+        default: tasksSearch = uiRealm.objects(Task).filter(predicate)
+        }
+    }
+    
     // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let lists = lists {
-            return lists.count
+        if let tasks = tasks {
+            return searchController.isActive ? tasksSearch.count : tasks.count
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        let list = lists[indexPath.row]
-        cell?.textLabel?.text = list.name
+        let task = searchController.isActive ? tasksSearch[indexPath.row] : tasks[indexPath.row]
+        cell?.textLabel?.text = task.name
         return cell!
     }
     
@@ -133,7 +148,7 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (deleteAction, indexPath) -> Void in
                         
-            let taskToBeDeleted = self.lists[indexPath.row]
+            let taskToBeDeleted = self.tasks[indexPath.row]
             try! uiRealm.write{
                 uiRealm.delete(taskToBeDeleted)
                 self.readTasksAndUpdateUI()
@@ -142,10 +157,17 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Edit") { (editAction, indexPath) -> Void in
             
-            let listToBeUpdated = self.lists[indexPath.row]
+            let listToBeUpdated = self.tasks[indexPath.row]
             self.displayAlertToAddTask(listToBeUpdated)
         }
         return [deleteAction, editAction]
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        let searchString = searchController.searchBar.text!
+        filterResultsWithSearchString(searchString: searchString)
+        self.tasksTableView.reloadData()
     }
 
     // MARK: - Navigation
